@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login/Sign Up</title>
+<style>
+.error {
+    color: red;
+}
+</style>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div id="signup">
+<h2>Sign Up</h2> 
+<form id="registrationForm" onsubmit="return validateForm()">
+<label for="firstName">First Name:</label>
+<input type="text" id="firstName" required>
+<span id="firstNameError" class="error"></span><br><br>
+
+<label for="lastName">Last Name:</label>
+<input type="text" id="lastName" required>
+<span id="lastNameError" class="error"></span><br><br>
+
+<label for="email">Email:</label>
+<input type="email" id="email" required>
+<span id="emailError" class="error"></span><br><br>
+<label for="userId">User ID:</label>
+<input type="text" id="userId" required>
+<span id="userIdError" class="error"></span><br><br>
+
+<label for="password">Password:</label>
+<input type="password" id="password" required>
+<span id="passwordError" class="error"></span><br><br>
+
+<label for="confirmPassword">Confirm Password:</label>
+<input type="password" id="confirmPassword" required>
+<span id="confirmPasswordError" class="error"></span><br><br>
+
+<input type="submit" value="Submit">
+</form>
+</div>
+<div id="login">
+<h2>Login</h2>
+<form id="loginForm" onsubmit="return validateForm1()">
+<label for="userId1">User ID:</label>
+<input type="text" id="userId1" required>
+<span id="userIdError1" class="error"></span><br><br>
+
+<label for="password1">Password:</label>
+<input type="password" id="password" required>
+<span id="passwordError1" class="error"></span><br><br>
+
+<input type="submit" value="Submit">
+</form>
+</div>
+<script>
+function validateForm() {
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
+    var email = document.getElementById("email").value;
+    var userId = document.getElementById("userId").value;
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    var isValid = true;
+    if (firstName == "") {
+        document.getElementById("firstNameError").innerHTML = "Please enter your first name.";
+        isValid = false;
+    } 
+    if (lastName == "") {
+        document.getElementById("lastNameError").innerHTML = "Please enter your last name.";
+        isValid = false;
+    } 
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
+        isValid = false;
+    } 
+    if (userId == "") {
+                document.getElementById("userIdError").innerHTML = "Please enter your user ID.";
+                isValid = false;
+            } 
+            if (password == "") {
+                document.getElementById("passwordError").innerHTML = "Please enter a password.";
+                isValid = false;
+            }
+            if (confirmPassword == "") {
+                document.getElementById("confirmPasswordError").innerHTML = "Please confirm your password.";
+                isValid = false;
+            } else if (confirmPassword != password) {
+                document.getElementById("confirmPasswordError").innerHTML = "Passwords do not match.";
+                isValid = false;
+            }
+            return isValid;
+        }
+        function validateForm1() {
+            var userId = document.getElementById("userId1").value;
+            var password = document.getElementById("password1").value;
+            var isValid = true;
+            if (userId1 == "") {
+                document.getElementById("userIdError1").innerHTML = "Please enter your user ID.";
+                isValid = false;
+            } 
+            if (password1 == "") {
+                document.getElementById("passwordError1").innerHTML = "Please enter a password.";
+                isValid = false;
+            } 
+            return isValid;
+        }
+    </script>
+</body>
+</html>
